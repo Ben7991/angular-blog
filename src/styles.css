@@ -1,1 +1,31 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --font-regular: 400;
+  --font-semibold: 600;
+  --font-bold: 700;
+}
+
+body {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: var(--font-regular);
+  line-height: 1.7;
+  color: var(--bs-secondary);
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--bs-dark);
+  font-weight: var(--font-bold);
+}
