@@ -1,0 +1,65 @@
+<app-page-header title="Profile">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb m-0">
+      <li class="breadcrumb-item"><a routerLink="/admin">Home</a></li>
+      <li class="breadcrumb-item mode-text" aria-current="page">Profile</li>
+    </ol>
+  </nav>
+</app-page-header>
+
+<div class="container-fluid p-0">
+  <div class="row">
+    <div class="col-12 col-md-6 col-xl-5">
+      <div class="mode-container p-3 rounded">
+        <h5 class="mb-3 mt-0 fw-semibold">Personal Information</h5>
+        <form>
+          <div class="form-group mb-3">
+            <label for="name">Name</label>
+            <input type="text" class="form-control mode-input" id="name" />
+          </div>
+          <div class="form-group mb-4">
+            <label for="username">Username</label>
+            <input type="text" class="form-control mode-input" id="username" />
+          </div>
+          <button type="submit" class="btn btn-primary">
+            <i class="bi bi-save"></i> Save changes
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="col-12 col-md-6 col-xl-5">
+      <div class="mode-container p-3 rounded">
+        <h5 class="mb-3 mt-0 fw-semibold">Change Password</h5>
+        <form>
+          <div class="form-group mb-3">
+            <label for="current_passowrd">Current Password</label>
+            <input
+              type="password"
+              class="form-control mode-input"
+              id="current_passowrd"
+            />
+          </div>
+          <div class="form-group mb-3">
+            <label for="new_password">New Password</label>
+            <input
+              type="password"
+              class="form-control mode-input"
+              id="new_password"
+            />
+          </div>
+          <div class="form-group mb-4">
+            <label for="confirm_password">Confirm Password</label>
+            <input
+              type="password"
+              class="form-control mode-input"
+              id="confirm_password"
+            />
+          </div>
+          <button type="submit" class="btn btn-primary">
+            <i class="bi bi-save"></i> Save changes
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

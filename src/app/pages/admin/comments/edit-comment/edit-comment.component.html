@@ -1,0 +1,42 @@
+<app-page-header title="Edit Comment">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb m-0">
+      <li class="breadcrumb-item"><a routerLink="/admin">Home</a></li>
+      <li class="breadcrumb-item">
+        <a routerLink="/admin/comments">Comments</a>
+      </li>
+      <li class="breadcrumb-item mode-text" aria-current="page">
+        Edit Comment
+      </li>
+    </ol>
+  </nav>
+</app-page-header>
+
+<app-go-back title="Comments" path="/admin/comments"></app-go-back>
+
+<div class="container-fluid p-0">
+  <div class="row">
+    <div class="col-12 col-md-6 col-xl-5">
+      <div class="mode-container p-3 rounded">
+        <h5 class="mb-3 mt-0 fw-semibold">Edit Comment</h5>
+        <form>
+          <div class="form-group mb-3">
+            <label for="name">Name</label>
+            <input type="text" class="form-control mode-input" id="name" />
+          </div>
+          <div class="form-group mb-4">
+            <label for="visibility">Visibility</label>
+            <select id="visibility" class="form-select mode-input">
+              <option value="visible">Visible</option>
+              <option value="hidden">Hidden</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn btn-primary">
+            <i class="bi bi-save"></i> Save changes
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
