@@ -1,0 +1,44 @@
+.mode-light .mode-header {
+  background-color: var(--bs-white);
+}
+
+.mode-light .mode-drawer {
+  background-color: var(--bs-gray-100);
+}
+
+.mode-light .mode-content {
+  background-color: var(--bs-gray-200);
+}
+
+.mode-light .mode-text {
+  color: var(--bs-secondary);
+}
+
+.mode-dark .mode-heading {
+  color: var(--bs-dark);
+}
+
+.mode-light .mode-link {
+  color: var(--bs-secondary);
+}
+
+.mode-light .mode-link:hover {
+  background-color: var(--bs-gray-200);
+}
+
+.mode-light .mode-link-active {
+  background-color: var(--bs-primary) !important;
+  color: var(--bs-white) !important;
+}
+
+.mode-light .mode-header-link {
+  color: var(--bs-secondary);
+}
+
+.mode-light .mode-header-link:hover {
+  background-color: var(--bs-gray-300);
+}
+
+.mode-light .mode-dropdown-menu {
+  background-color: var(--bs-gray-200);
+}

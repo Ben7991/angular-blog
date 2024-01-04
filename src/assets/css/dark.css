@@ -1,0 +1,44 @@
+.mode-dark .mode-header {
+  background-color: var(--dark-deep);
+}
+
+.mode-dark .mode-drawer {
+  background-color: var(--dark-medium);
+}
+
+.mode-dark .mode-content {
+  background-color: var(--dark-light);
+}
+
+.mode-dark .mode-text {
+  color: var(--bs-gray-500);
+}
+
+.mode-dark .mode-heading {
+  color: var(--bs-gray-300);
+}
+
+.mode-dark .mode-link {
+  color: var(--bs-gray-500);
+}
+
+.mode-dark .mode-link:hover {
+  background-color: var(--bs-gray-700);
+}
+
+.mode-dark .mode-link-active {
+  background-color: var(--bs-primary) !important;
+  color: var(--bs-white) !important;
+}
+
+.mode-dark .mode-header-link {
+  color: var(--bs-gray-500);
+}
+
+.mode-dark .mode-header-link:hover {
+  background-color: var(--bs-gray-700);
+}
+
+.mode-dark .mode-dropdown-menu {
+  background-color: var(--dark-medium);
+}
