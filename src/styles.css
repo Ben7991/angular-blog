@@ -30,6 +30,9 @@ h3,
 h4,
 h5,
 h6 {
-  color: var(--bs-dark);
   font-weight: var(--font-bold);
+}
+
+.breadcrumb {
+  --bs-breadcrumb-divider-color: var(--bs-secondary);
 }
