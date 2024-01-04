@@ -45,9 +45,10 @@
 }
 
 .mode-light .mode-header-link:hover {
-  background-color: var(--bs-gray-300);
+  background-color: var(--bs-gray-200);
 }
 
-.mode-light .mode-dropdown-menu {
-  background-color: var(--bs-gray-200);
+.mode-light .mode-container {
+  background-color: var(--bs-gray-100);
+  border: 1px solid var(--bs-gray-500);
 }
