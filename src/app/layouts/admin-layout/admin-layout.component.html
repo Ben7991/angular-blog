@@ -1,0 +1,76 @@
+<header class="header mode-header">
+  <div class="container-fluid p-0 d-flex align-items-center justify-content-between">
+    <a routerLink="/admin" class="header-brand">Posty</a>
+    <div class="header-collapse">
+      <ul class="header-nav">
+        <li class="header-nav-item">
+          <div ngbDropdown>
+            <button type="button" class="header-nav-link mode-header-link" id="menu" ngbDropdownToggle>
+              <i class="bi bi-person"></i>
+            </button>
+            <div ngbDropdownMenu class="mode-dropdown-menu">
+              <a ngbDropdownItem routerLink="/admin/profile" class="header-dropdown-item mode-header-link">
+                <i class="bi bi-person"></i> Profile
+              </a>
+              <button ngbDropdownItem class="header-dropdown-item mode-header-link">
+                <i class="bi bi-box-arrow-right"></i> Logout
+              </button>
+            </div>
+          </div>
+        </li>
+        <li class="header-nav-item">
+          <div ngbDropdown>
+            <button type="button" class="header-nav-link mode-header-link" id="menu" ngbDropdownToggle>
+              <i class="bi bi-{{ currentTheme }}"></i>
+            </button>
+            <div ngbDropdownMenu class="mode-dropdown-menu">
+              <button ngbDropdownItem class="header-dropdown-item mode-header-link"
+                (click)="onToggleTheme('mode-light')">
+                <i class="bi bi-sun-fill"></i> Light Theme
+              </button>
+              <button ngbDropdownItem class="header-dropdown-item mode-header-link"
+                (click)="onToggleTheme('mode-dark')">
+                <i class="bi bi-moon-fill"></i> Dark Theme
+              </button>
+            </div>
+          </div>
+        </li>
+        <li class="header-nav-item">
+          <button class="header-nav-link d-block d-md-none mode-header-link" (click)="isShown = !isShown">
+            <i class="bi bi-list" *ngIf="!isShown"></i>
+            <i class="bi bi-x" *ngIf="isShown"></i>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<main class="main">
+  <aside class="main-drawer mode-drawer" [ngClass]="isShown ? 'main-drawer-show' : ''">
+    <div class="main-nav">
+      <a routerLink="/admin" class="main-nav-link mode-link" routerLinkActive="mode-link-active">
+        <i class="bi bi-graph-up-arrow"></i> Dashboard
+      </a>
+      <a routerLink="/admin/categories" class="main-nav-link mode-link" routerLinkActive="mode-link-active">
+        <i class="bi bi-bookmarks"></i> Categories
+      </a>
+      <a routerLink="/admin/tags" class="main-nav-link mode-link" routerLinkActive="mode-link-active">
+        <i class="bi bi-tags"></i> Tags
+      </a>
+      <a routerLink="/admin/posts" class="main-nav-link mode-link" routerLinkActive="mode-link-active">
+        <i class="bi bi-graph-up-arrow"></i> Posts
+      </a>
+      <a routerLink="/admin/comments" class="main-nav-link mode-link" routerLinkActive="mode-link-active">
+        <i class="bi bi-chat"></i> Comments
+      </a>
+      <a routerLink="/admin/comments" class="main-nav-link mode-link" routerLinkActive="mode-link-active">
+        <i class="bi bi-people"></i> Users
+      </a>
+    </div>
+  </aside>
+  <section class="main-content mode-content">
+    <p class="mode-text">Testing text</p>
+    <router-outlet></router-outlet>
+  </section>
+</main>
