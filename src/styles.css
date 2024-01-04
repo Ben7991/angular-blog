@@ -2,6 +2,10 @@
   --font-regular: 400;
   --font-semibold: 600;
   --font-bold: 700;
+
+  --dark-deep: #252525;
+  --dark-medium: #2c2c2c;
+  --dark-light: #353535;
 }
 
 body {
