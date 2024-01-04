@@ -1,3 +1,16 @@
+.mode-light {
+  color: var(--bs-secondary);
+}
+
+.mode-light h1,
+.mode-light h2,
+.mode-light h3,
+.mode-light h4,
+.mode-light h5,
+.mode-light h6 {
+  color: var(--bs-dark);
+}
+
 .mode-light .mode-header {
   background-color: var(--bs-white);
 }
@@ -12,10 +25,6 @@
 
 .mode-light .mode-text {
   color: var(--bs-secondary);
-}
-
-.mode-dark .mode-heading {
-  color: var(--bs-dark);
 }
 
 .mode-light .mode-link {

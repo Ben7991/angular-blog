@@ -1,3 +1,16 @@
+.mode-dark {
+  color: var(--bs-gray-500);
+}
+
+.mode-dark h1,
+.mode-dark h2,
+.mode-dark h3,
+.mode-dark h4,
+.mode-dark h5,
+.mode-dark h6 {
+  color: var(--bs-gray-300);
+}
+
 .mode-dark .mode-header {
   background-color: var(--dark-deep);
 }
@@ -12,10 +25,6 @@
 
 .mode-dark .mode-text {
   color: var(--bs-gray-500);
-}
-
-.mode-dark .mode-heading {
-  color: var(--bs-gray-300);
 }
 
 .mode-dark .mode-link {
