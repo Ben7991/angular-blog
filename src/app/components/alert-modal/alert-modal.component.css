@@ -29,7 +29,7 @@
   align-items: center;
   color: var(--bs-white);
   gap: 15px;
-  animation: fade-in 5s ease-in 1s both;
+  animation: fade-in 5s ease-in both;
 }
 
 .alert-modal-close {
