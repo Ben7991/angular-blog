@@ -51,57 +51,37 @@
           <tr>
             <th>#</th>
             <th>NAME</th>
+            <th>USERNAME</th>
+            <th>ACCOUNT TYPE</th>
             <th>VISIBILITY</th>
             <th>ACTION</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>100000</td>
-            <td>Entertainment</td>
+          <tr *ngFor="let user of users">
+            <td>{{ user.id }}</td>
+            <td>{{ user.name }}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.user_type | upperCaseFirstLetter }}</td>
             <td>
-              <i class="bi bi-check2 text-success"></i>
+              <i
+                class="bi bi-{{
+                  user.status === 'active'
+                    ? 'check2 text-success'
+                    : 'x text-danger'
+                }}"
+              ></i>
             </td>
             <td>
               <a
-                routerLink="/admin/users/1"
+                routerLink="/admin/users/{{ user.id }}"
                 class="action-btn mode-text"
                 ngbPopover="Edit"
                 triggers="mouseenter:mouseleave"
+                *ngIf="user.user_type === 'reader'"
               >
                 <i class="bi bi-pencil-square"></i>
               </a>
-              <button
-                class="action-btn text-danger"
-                ngbPopover="Delete"
-                triggers="mouseenter:mouseleave"
-              >
-                <i class="bi bi-eye-slash"></i>
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <td>100000</td>
-            <td>Sports</td>
-            <td>
-              <i class="bi bi-check2 text-success"></i>
-            </td>
-            <td>
-              <a
-                routerLink="/admin/users/2"
-                class="action-btn mode-text"
-                ngbPopover="Edit"
-                triggers="mouseenter:mouseleave"
-              >
-                <i class="bi bi-pencil-square"></i>
-              </a>
-              <button
-                class="action-btn text-danger"
-                ngbPopover="Delete"
-                triggers="mouseenter:mouseleave"
-              >
-                <i class="bi bi-eye-slash"></i>
-              </button>
             </td>
           </tr>
         </tbody>
@@ -109,3 +89,4 @@
     </div>
   </div>
 </div>
+<ng-template appAlertModal></ng-template>
