@@ -30,6 +30,10 @@ import { ProfileComponent } from './pages/admin/profile/profile.component';
 import { AlertModalComponent } from './components/alert-modal/alert-modal.component';
 import { AlertModalDirective } from './shared/directives/alert-modal.directive';
 import { UpperCaseFirstLetterPipe } from './shared/pipes/upper-case-first-letter.pipe';
+import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
+import { LoginComponent } from './pages/auth/login/login.component';
+import { RegisterComponent } from './pages/auth/register/register.component';
+import { ThemeTogglerComponent } from './components/theme-toggler/theme-toggler.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +62,10 @@ import { UpperCaseFirstLetterPipe } from './shared/pipes/upper-case-first-letter
     AlertModalComponent,
     AlertModalDirective,
     UpperCaseFirstLetterPipe,
+    AuthLayoutComponent,
+    LoginComponent,
+    RegisterComponent,
+    ThemeTogglerComponent,
   ],
   imports: [
     BrowserModule,
