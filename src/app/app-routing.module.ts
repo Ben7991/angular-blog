@@ -19,8 +19,13 @@ import { CreateUserComponent } from './pages/admin/users/create-user/create-user
 import { EditUserComponent } from './pages/admin/users/edit-user/edit-user.component';
 import { ProfileComponent } from './pages/admin/profile/profile.component';
 import { userResolver } from './pages/admin/users/user.resolver';
+import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
+import { LoginComponent } from './pages/auth/login/login.component';
+import { RegisterComponent } from './pages/auth/register/register.component';
 
 const appRoute: Routes = [
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
   {
     path: 'admin',
     component: AdminLayoutComponent,
