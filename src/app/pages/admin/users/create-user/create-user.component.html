@@ -17,16 +17,146 @@
     <div class="col-12 col-md-6 col-xl-5">
       <div class="mode-container p-3 rounded">
         <h5 class="mb-3 mt-0 fw-semibold">Add Admin User</h5>
-        <form>
-          <div class="form-group mb-4">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <div class="form-group mb-3">
             <label for="name">Name</label>
-            <input type="text" class="form-control mode-input" id="name" />
+            <input
+              type="text"
+              class="form-control mode-input"
+              id="name"
+              formControlName="name"
+            />
+            <div *ngIf="name.invalid && (name.touched || name.dirty)">
+              <small
+                class="d-block text-danger my-1"
+                *ngIf="name.errors?.['required']"
+                >Name is required</small
+              >
+              <small
+                class="d-block text-danger my-1"
+                *ngIf="name.errors?.['pattern']"
+                >Only letters and whitespaces are allowed</small
+              >
+            </div>
           </div>
-          <button type="submit" class="btn btn-primary">
-            <i class="bi bi-save"></i> Save
-          </button>
+          <div class="form-group mb-3">
+            <label for="username">Username</label>
+            <input
+              type="text"
+              class="form-control mode-input"
+              id="username"
+              formControlName="username"
+            />
+            <div
+              *ngIf="username.invalid && (username.touched || username.dirty)"
+            >
+              <small
+                class="d-block text-danger my-1"
+                *ngIf="username.errors?.['required']"
+                >Username is required</small
+              >
+              <small
+                class="d-block text-danger my-1"
+                *ngIf="username.errors?.['pattern']"
+                >Only letters and numbers are allowed</small
+              >
+              <small
+                class="d-block text-danger my-1"
+                *ngIf="username.errors?.['maxlength']"
+                >Characters must be 15 or less</small
+              >
+              <small
+                class="d-block text-danger my-1"
+                *ngIf="username.errors?.['usernameTaken']"
+                >Username already exist, please try another one</small
+              >
+            </div>
+          </div>
+          <div class="form-group mb-3">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              class="form-control mode-input"
+              id="password"
+              formControlName="password"
+            />
+            <div
+              *ngIf="password.invalid && (password.touched || password.dirty) ||
+              (registerForm.errors?.['passwordContainName'] &&
+              password.dirty && (username.dirty || name.dirty))
+              "
+            >
+              <small
+                class="d-block text-danger my-1"
+                *ngIf="password.errors?.['required']"
+                >Password is required</small
+              >
+              <small
+                class="d-block text-danger my-1"
+                *ngIf="password.errors?.['startswithuppercase']"
+                >Password should start with an uppercase</small
+              >
+              <small
+                class="d-block text-danger my-1"
+                *ngIf="password.errors?.['containnumber']"
+                >Password should contain a number</small
+              >
+              <small
+                class="d-block text-danger my-1"
+                *ngIf="password.errors?.['passwordlength']"
+                >Password should be 8 or more characters long</small
+              >
+              <small
+                class="d-block text-danger my-1"
+                *ngIf="password.errors?.['containsymbol']"
+                >Password should contain any of these symbols(*$@?=)</small
+              >
+              <small
+                class="d-block text-danger my-1"
+                *ngIf="registerForm.errors?.['passwordContainName'] && (name.dirty && username.dirty)"
+                >Name or Username values can't be used in password</small
+              >
+            </div>
+          </div>
+          <div class="form-group mb-4">
+            <label for="confirmPassword">Confirm Password</label>
+            <input
+              type="password"
+              class="form-control mode-input"
+              id="confirmPassword"
+              formControlName="confirmPassword"
+            />
+            <div
+              *ngIf="
+                confirmPassword.invalid &&
+                (confirmPassword.touched || confirmPassword.dirty) ||
+                (registerForm.errors?.['passwordMatch'] && confirmPassword.dirty)
+              "
+            >
+              <small
+                class="d-block text-danger my-1"
+                *ngIf="confirmPassword.errors?.['required']"
+                >Confirm password is required</small
+              >
+              <small
+                class="d-block text-danger my-1"
+                *ngIf="registerForm.errors?.['passwordMatch'] && password.touched"
+                >Passwords do not match each other</small
+              >
+            </div>
+          </div>
+
+          <div class="d-flex align-items-center justify-content-between">
+            <button type="submit" class="btn btn-primary">
+              <i class="bi bi-save"></i> Save
+            </button>
+            <div class="spinner-border text-primary" role="status" *ngIf="isLoading">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </div>
         </form>
       </div>
     </div>
   </div>
 </div>
+<ng-template appAlertModal></ng-template>
