@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -25,6 +27,7 @@ import { EditCommentComponent } from './pages/admin/comments/edit-comment/edit-c
 import { CreateUserComponent } from './pages/admin/users/create-user/create-user.component';
 import { EditUserComponent } from './pages/admin/users/edit-user/edit-user.component';
 import { ProfileComponent } from './pages/admin/profile/profile.component';
+import { AlertModalComponent } from './components/alert-modal/alert-modal.component';
 
 @NgModule({
   declarations: [
@@ -50,8 +53,16 @@ import { ProfileComponent } from './pages/admin/profile/profile.component';
     CreateUserComponent,
     EditUserComponent,
     ProfileComponent,
+    AlertModalComponent,
   ],
-  imports: [BrowserModule, NgbModule, AppRoutingModule],
+  imports: [
+    BrowserModule,
+    NgbModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
