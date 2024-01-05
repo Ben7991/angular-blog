@@ -18,6 +18,7 @@ import { EditCommentComponent } from './pages/admin/comments/edit-comment/edit-c
 import { CreateUserComponent } from './pages/admin/users/create-user/create-user.component';
 import { EditUserComponent } from './pages/admin/users/edit-user/edit-user.component';
 import { ProfileComponent } from './pages/admin/profile/profile.component';
+import { userResolver } from './pages/admin/users/user.resolver';
 
 const appRoute: Routes = [
   {
@@ -36,9 +37,17 @@ const appRoute: Routes = [
       { path: 'posts/:id', component: EditPostComponent },
       { path: 'comments', component: CommentsComponent },
       { path: 'comments/:id', component: EditCommentComponent },
-      { path: 'users', component: UsersComponent },
+      {
+        path: 'users',
+        component: UsersComponent,
+        resolve: { users: userResolver },
+      },
       { path: 'users/create', component: CreateUserComponent },
-      { path: 'users/:id', component: EditUserComponent },
+      {
+        path: 'users/:id',
+        component: EditUserComponent,
+        resolve: { users: userResolver },
+      },
       { path: 'profile', component: ProfileComponent },
     ],
   },
