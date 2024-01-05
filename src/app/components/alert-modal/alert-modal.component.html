@@ -1,0 +1,6 @@
+<div class="alert-modal bg-{{ variant }} p-3 rounded" *ngIf="isShown">
+  <p class="m-0">{{ message }}</p>
+  <button class="alert-modal-close" (click)="isShown = false">
+    <i class="bi bi-x"></i>
+  </button>
+</div>

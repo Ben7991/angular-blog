@@ -1,0 +1,47 @@
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  20% {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  95% {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.alert-modal {
+  position: fixed;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  color: var(--bs-white);
+  gap: 15px;
+  animation: fade-in 5s ease-in 1s both;
+}
+
+.alert-modal-close {
+  background-color: transparent;
+  width: 30px;
+  height: 30px;
+  color: var(--bs-white);
+  border-radius: 50%;
+  border: none;
+  outline: none;
+}
+
+.alert-modal-close:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
