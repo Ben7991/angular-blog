@@ -1,0 +1,26 @@
+<div ngbDropdown>
+  <button
+    type="button"
+    class="header-nav-link mode-header-link"
+    id="menu"
+    ngbDropdownToggle
+  >
+    <i class="bi bi-{{ currentTheme }}"></i>
+  </button>
+  <div ngbDropdownMenu class="mode-container">
+    <button
+      ngbDropdownItem
+      class="mode-header-link"
+      (click)="onToggleTheme('mode-light')"
+    >
+      <i class="bi bi-sun-fill"></i> Light Theme
+    </button>
+    <button
+      ngbDropdownItem
+      class="mode-header-link"
+      (click)="onToggleTheme('mode-dark')"
+    >
+      <i class="bi bi-moon-fill"></i> Dark Theme
+    </button>
+  </div>
+</div>

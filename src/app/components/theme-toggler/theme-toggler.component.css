@@ -1,0 +1,8 @@
+.header-nav-link {
+  background-color: transparent;
+  border: none;
+  text-decoration: none;
+  outline: none;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
