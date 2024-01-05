@@ -1,11 +1,7 @@
 import { Injectable } from '@angular/core';
-import {
-  HttpClient,
-  HttpErrorResponse,
-  HttpParams,
-} from '@angular/common/http';
-import { catchError, map, of, throwError } from 'rxjs';
-import { User } from '../types/user';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { catchError, map, of, tap, throwError } from 'rxjs';
+import { CreatedUser, User } from '../types/user';
 
 type RegisterUserResponse = {
   data: {
@@ -16,6 +12,19 @@ type RegisterUserResponse = {
   };
   token: string;
   message: string;
+};
+
+type UsersData = {
+  data: {
+    id: number;
+    name: string;
+    username: string;
+    user_type: string;
+    status: string;
+  }[];
+  totalUsers: number;
+  totalAdmins: number;
+  totalReaders: number;
 };
 
 @Injectable({
@@ -49,6 +58,12 @@ export class UserService {
           params: new HttpParams().set('admin', true),
         }
       )
-      .pipe(catchError((error) => throwError(error.error.message)));
+      .pipe(catchError((error) => of(error.error.message)));
+  }
+
+  public allUsers() {
+    return this.httpClient
+      .get<UsersData>('http://localhost:8000/api/users')
+      .pipe(catchError((error) => of(error.error.message)));
   }
 }
