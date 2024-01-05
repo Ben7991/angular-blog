@@ -29,6 +29,7 @@ import { EditUserComponent } from './pages/admin/users/edit-user/edit-user.compo
 import { ProfileComponent } from './pages/admin/profile/profile.component';
 import { AlertModalComponent } from './components/alert-modal/alert-modal.component';
 import { AlertModalDirective } from './shared/directives/alert-modal.directive';
+import { UpperCaseFirstLetterPipe } from './shared/pipes/upper-case-first-letter.pipe';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { AlertModalDirective } from './shared/directives/alert-modal.directive';
     ProfileComponent,
     AlertModalComponent,
     AlertModalDirective,
+    UpperCaseFirstLetterPipe,
   ],
   imports: [
     BrowserModule,
