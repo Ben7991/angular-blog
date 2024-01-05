@@ -5,12 +5,17 @@ import {
   RouterStateSnapshot,
 } from '@angular/router';
 import { Observable } from 'rxjs';
-import { UserService } from 'src/app/shared/services/user.service';
-import { CreatedUser } from 'src/app/shared/types/user';
+import { UserService, UsersData } from 'src/app/shared/services/user.service';
 
 export const userResolver = (
   route: ActivatedRoute,
   state: RouterStateSnapshot
-): CreatedUser[] | Observable<CreatedUser[]> | Promise<CreatedUser[]> => {
-  return inject(UserService).allUsers();
+): UsersData | Observable<UsersData> | Promise<UsersData> => {
+  const userService = inject(UserService);
+
+  if (userService.usersData) {
+    return userService.usersData;
+  }
+
+  return userService.allUsers();
 };

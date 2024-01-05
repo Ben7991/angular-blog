@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { catchError, map, of, tap, throwError } from 'rxjs';
+import { Observable, catchError, map, of, tap, throwError } from 'rxjs';
 import { CreatedUser, User } from '../types/user';
 
 type RegisterUserResponse = {
@@ -9,12 +9,13 @@ type RegisterUserResponse = {
     name: string;
     username: string;
     user_type: string;
+    status: string;
   };
   token: string;
   message: string;
 };
 
-type UsersData = {
+export type UsersData = {
   data: {
     id: number;
     name: string;
@@ -31,6 +32,7 @@ type UsersData = {
   providedIn: 'root',
 })
 export class UserService {
+  usersData: UsersData | undefined;
   constructor(private httpClient: HttpClient) {}
 
   public checkUsername(username: string) {
@@ -58,12 +60,31 @@ export class UserService {
           params: new HttpParams().set('admin', true),
         }
       )
-      .pipe(catchError((error) => of(error.error.message)));
+      .pipe(
+        tap((user) => {
+          const createdUser = {
+            id: user.data.id,
+            name: user.data.name,
+            username: user.data.username,
+            user_type: user.data.user_type,
+            status: user.data.status,
+          };
+          this.usersData?.data.push(createdUser);
+          this.usersData!.totalAdmins++;
+          this.usersData!.totalUsers++;
+        }),
+        catchError((error) => of(error.error.message))
+      );
   }
 
-  public allUsers() {
+  public allUsers(): Observable<UsersData> {
     return this.httpClient
       .get<UsersData>('http://localhost:8000/api/users')
-      .pipe(catchError((error) => of(error.error.message)));
+      .pipe(
+        tap((usersData) => {
+          this.usersData = usersData;
+        }),
+        catchError((error) => of(error.error.message))
+      );
   }
 }
