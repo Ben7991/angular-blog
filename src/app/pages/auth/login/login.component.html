@@ -1,0 +1,23 @@
+<app-auth-layout>
+  <div class="mode-container p-4 rounded mb-3">
+    <h5 class="fw-semibold mb-4">Login</h5>
+    <form>
+      <div class="form-group mb-3">
+        <label for="username">Username</label>
+        <input type="text" class="form-control mode-input" id="username" />
+      </div>
+      <div class="form-group mb-4">
+        <label for="password">Password</label>
+        <input type="text" class="form-control mode-input" id="password" />
+      </div>
+      <button class="btn btn-primary"><i class="bi bi-key"></i> Sign-in</button>
+    </form>
+  </div>
+  <div class="text-center">
+    <p class="m-0">
+      Don't have an account? Use this
+      <a routerLink="/register" class="link-primary">link</a> to access the
+      register page to create your account
+    </p>
+  </div>
+</app-auth-layout>
