@@ -28,6 +28,7 @@ import { CreateUserComponent } from './pages/admin/users/create-user/create-user
 import { EditUserComponent } from './pages/admin/users/edit-user/edit-user.component';
 import { ProfileComponent } from './pages/admin/profile/profile.component';
 import { AlertModalComponent } from './components/alert-modal/alert-modal.component';
+import { AlertModalDirective } from './shared/directives/alert-modal.directive';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { AlertModalComponent } from './components/alert-modal/alert-modal.compon
     EditUserComponent,
     ProfileComponent,
     AlertModalComponent,
+    AlertModalDirective,
   ],
   imports: [
     BrowserModule,
