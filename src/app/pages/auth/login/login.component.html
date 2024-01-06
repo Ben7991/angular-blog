@@ -1,16 +1,69 @@
 <app-auth-layout>
   <div class="mode-container p-4 rounded mb-3">
     <h5 class="fw-semibold mb-4">Login</h5>
-    <form>
+    <form #form="ngForm" (ngSubmit)="onSubmit(form)">
       <div class="form-group mb-3">
         <label for="username">Username</label>
-        <input type="text" class="form-control mode-input" id="username" />
+        <input
+          type="text"
+          required
+          class="form-control mode-input"
+          id="username"
+          name="username"
+          [(ngModel)]="username"
+          #usernameInput="ngModel"
+        />
+        <div
+          *ngIf="
+            usernameInput.invalid &&
+            (usernameInput.dirty || usernameInput.touched)
+          "
+        >
+          <small
+            class="text-danger my-1"
+            *ngIf="usernameInput.errors?.['required']"
+          >
+            Username is required
+          </small>
+        </div>
       </div>
       <div class="form-group mb-4">
         <label for="password">Password</label>
-        <input type="text" class="form-control mode-input" id="password" />
+        <input
+          type="password"
+          class="form-control mode-input"
+          id="password"
+          name="password"
+          [(ngModel)]="password"
+          #passwordInput="ngModel"
+          required
+        />
+        <div
+          *ngIf="
+            passwordInput.invalid &&
+            (passwordInput.dirty || passwordInput.touched)
+          "
+        >
+          <small
+            class="text-danger my-1"
+            *ngIf="passwordInput.errors?.['required']"
+          >
+            Password is required
+          </small>
+        </div>
       </div>
-      <button class="btn btn-primary"><i class="bi bi-key"></i> Sign-in</button>
+      <div class="d-flex align-items-center justify-content-between">
+        <button class="btn btn-primary" [disabled]="form.invalid || isLoading">
+          <i class="bi bi-key"></i> Sign-in
+        </button>
+        <div
+          class="spinner-border text-primary"
+          role="status"
+          *ngIf="isLoading"
+        >
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
     </form>
   </div>
   <div class="text-center">
@@ -20,4 +73,5 @@
       register page to create your account
     </p>
   </div>
+  <ng-template appAlertModal></ng-template>
 </app-auth-layout>
