@@ -50,3 +50,8 @@ h6 {
     flex-basis: 25%;
   }
 }
+
+input.ng-invalid.ng-touched,
+input.ng-invalid.ng-dirty {
+  border-color: var(--bs-danger) !important;
+}
