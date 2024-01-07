@@ -34,6 +34,7 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
 import { LoginComponent } from './pages/auth/login/login.component';
 import { RegisterComponent } from './pages/auth/register/register.component';
 import { ThemeTogglerComponent } from './components/theme-toggler/theme-toggler.component';
+import { httpInterceptorProviders } from './shared/interceptor/interceptor-providers';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,7 @@ import { ThemeTogglerComponent } from './components/theme-toggler/theme-toggler.
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
