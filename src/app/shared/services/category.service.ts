@@ -10,6 +10,11 @@ type CategoryUpdateResponse = {
   hidden: number;
 };
 
+type CreateCategoryResponse = {
+  data: Category;
+  message: string;
+};
+
 @Injectable({
   providedIn: 'root',
 })
@@ -48,5 +53,22 @@ export class CategoryService {
         }),
         catchError((error) => throwError(error.error.message))
       );
+  }
+
+  createCategory(name: string): Observable<CreateCategoryResponse> {
+    return this.httpClient
+      .post<CreateCategoryResponse>('http://localhost:8000/api/categories', {
+        name: name,
+      })
+      .pipe(
+        tap((response) => {
+          this._categoryData?.data.push(response.data);
+        }),
+        catchError((error) => throwError(error.error.message))
+      );
+  }
+
+  findById(id: number) {
+    return this._categoryData?.data.find((category) => category.id === id);
   }
 }
