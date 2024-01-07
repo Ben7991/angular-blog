@@ -19,10 +19,10 @@ import { CreateUserComponent } from './pages/admin/users/create-user/create-user
 import { EditUserComponent } from './pages/admin/users/edit-user/edit-user.component';
 import { ProfileComponent } from './pages/admin/profile/profile.component';
 import { userResolver } from './pages/admin/users/user.resolver';
-import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { LoginComponent } from './pages/auth/login/login.component';
 import { RegisterComponent } from './pages/auth/register/register.component';
 import { adminAuthGuardGuard } from './shared/guard/admin-auth-guard.guard';
+import { categoryResolver } from './shared/resolver/category.resolver';
 
 const appRoute: Routes = [
   { path: 'login', component: LoginComponent },
@@ -33,9 +33,17 @@ const appRoute: Routes = [
     canActivate: [adminAuthGuardGuard],
     children: [
       { path: '', component: DashboardComponent, pathMatch: 'full' },
-      { path: 'categories', component: CategoriesComponent },
+      {
+        path: 'categories',
+        component: CategoriesComponent,
+        resolve: { categories: categoryResolver },
+      },
       { path: 'categories/create', component: CreateCategoryComponent },
-      { path: 'categories/:id', component: EditCategoryComponent },
+      {
+        path: 'categories/:id',
+        component: EditCategoryComponent,
+        resolve: { categories: categoryResolver },
+      },
       { path: 'tags', component: TagsComponent },
       { path: 'tags/create', component: CreateTagComponent },
       { path: 'tags/:id', component: EditTagComponent },
