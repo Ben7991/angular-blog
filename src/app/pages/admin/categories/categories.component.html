@@ -56,15 +56,21 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>100000</td>
-            <td>Entertainment</td>
+          <tr *ngFor="let category of categories">
+            <td>{{ category.id }}</td>
+            <td>{{ category.name }}</td>
             <td>
-              <i class="bi bi-check2 text-success"></i>
+              <i
+                class="bi bi-{{
+                  category.status === 'active'
+                    ? 'check2 text-success'
+                    : 'eye-slash text-danger'
+                }}"
+              ></i>
             </td>
             <td>
               <a
-                routerLink="/admin/categories/1"
+                routerLink="/admin/categories/{{ category.id }}"
                 class="action-btn mode-text"
                 ngbPopover="Edit"
                 triggers="mouseenter:mouseleave"
@@ -73,34 +79,17 @@
               </a>
               <button
                 class="action-btn text-danger"
-                ngbPopover="Delete"
+                ngbPopover="Change status"
                 triggers="mouseenter:mouseleave"
+                (click)="onChangeStatus(category.id)"
               >
-                <i class="bi bi-eye-slash"></i>
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <td>100000</td>
-            <td>Sports</td>
-            <td>
-              <i class="bi bi-check2 text-success"></i>
-            </td>
-            <td>
-              <a
-                routerLink="/admin/categories/2"
-                class="action-btn mode-text"
-                ngbPopover="Edit"
-                triggers="mouseenter:mouseleave"
-              >
-                <i class="bi bi-pencil-square"></i>
-              </a>
-              <button
-                class="action-btn text-danger"
-                ngbPopover="Delete"
-                triggers="mouseenter:mouseleave"
-              >
-                <i class="bi bi-eye-slash"></i>
+                <i
+                  class="bi bi-{{
+                    category.status === 'active'
+                      ? 'eye-slash text-danger'
+                      : 'check2 text-success'
+                  }}"
+                ></i>
               </button>
             </td>
           </tr>
@@ -109,3 +98,4 @@
     </div>
   </div>
 </div>
+<ng-template appAlertModal></ng-template>
