@@ -10,6 +10,7 @@ import {
   throwError,
 } from 'rxjs';
 import { CreatedUser, LoggedInUser, User } from '../types/user';
+import { Router } from '@angular/router';
 
 export type RegisteredUserResponse = {
   duration: number;
@@ -46,9 +47,11 @@ export type UsersData = {
   providedIn: 'root',
 })
 export class UserService {
+  private _logoutTimer: any;
   loggedInUser = new BehaviorSubject<LoggedInUser | undefined>(undefined);
   usersData: UsersData | undefined;
-  constructor(private httpClient: HttpClient) {}
+
+  constructor(private httpClient: HttpClient, private router: Router) {}
 
   checkUsername(username: string) {
     return this.httpClient
@@ -120,7 +123,7 @@ export class UserService {
 
   private handleAuthentication(registeredUser: RegisteredUserResponse) {
     let logoutDate = new Date(
-      new Date().getTime() * registeredUser.duration * 1000
+      new Date().getTime() + registeredUser.duration * 1000
     );
     let loggedInUser: LoggedInUserResponse = {
       id: registeredUser.data.id,
@@ -134,6 +137,7 @@ export class UserService {
     const user = new LoggedInUser(loggedInUser);
     this.loggedInUser.next(user);
     localStorage.setItem('auth', JSON.stringify(user));
+    this.autoLogout(registeredUser.duration * 1000);
   }
 
   registerReaderUser(user: User) {
@@ -146,5 +150,43 @@ export class UserService {
         tap((userData) => this.handleAuthentication(userData)),
         catchError((error) => throwError(error.error.message))
       );
+  }
+
+  logout() {
+    this.loggedInUser.next(undefined);
+    localStorage.removeItem('auth');
+    this.router.navigate(['/login']);
+    if (this._logoutTimer) {
+      clearTimeout(this._logoutTimer);
+    }
+    this._logoutTimer = null;
+  }
+
+  autoLogout(expirationDuration: number) {
+    this._logoutTimer = setTimeout(() => {
+      this.logout();
+    }, expirationDuration);
+  }
+
+  autoLogin() {
+    if (!localStorage.getItem('auth')) {
+      return;
+    }
+
+    const storedJsonAuth = JSON.parse(localStorage.getItem('auth')!);
+    const logoutDate = new Date(storedJsonAuth._expirationDate);
+    let retrievedUser: LoggedInUserResponse = {
+      id: storedJsonAuth._id,
+      name: storedJsonAuth.name,
+      status: storedJsonAuth.status,
+      user_type: storedJsonAuth.user_type,
+      token: storedJsonAuth._token,
+      username: storedJsonAuth._username,
+      expirationDate: logoutDate,
+    };
+    const user = new LoggedInUser(retrievedUser);
+    this.loggedInUser.next(user);
+    const expirationDuration = logoutDate.getTime() - new Date().getTime();
+    this.autoLogout(expirationDuration);
   }
 }
