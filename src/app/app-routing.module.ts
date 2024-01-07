@@ -22,6 +22,7 @@ import { userResolver } from './pages/admin/users/user.resolver';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { LoginComponent } from './pages/auth/login/login.component';
 import { RegisterComponent } from './pages/auth/register/register.component';
+import { adminAuthGuardGuard } from './shared/guard/admin-auth-guard.guard';
 
 const appRoute: Routes = [
   { path: 'login', component: LoginComponent },
@@ -29,6 +30,7 @@ const appRoute: Routes = [
   {
     path: 'admin',
     component: AdminLayoutComponent,
+    canActivate: [adminAuthGuardGuard],
     children: [
       { path: '', component: DashboardComponent, pathMatch: 'full' },
       { path: 'categories', component: CategoriesComponent },
