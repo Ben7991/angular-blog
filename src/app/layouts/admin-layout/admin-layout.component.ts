@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   selector: 'app-admin-layout',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AdminLayoutComponent {
   isShown = false;
+
+  constructor(private userService: UserService) {}
+
+  onLogout() {
+    this.userService.logout();
+  }
 }
