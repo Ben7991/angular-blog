@@ -10,6 +10,11 @@ type UpdateTagResponse = {
   hidden: number;
 };
 
+type CreateTagResponse = {
+  data: Tag;
+  message: string;
+};
+
 @Injectable({
   providedIn: 'root',
 })
@@ -47,10 +52,10 @@ export class TagService {
 
   createTag(name: string) {
     return this.httpClient
-      .post<Tag>('http://localhost:8000/api/tags', { name })
+      .post<CreateTagResponse>('http://localhost:8000/api/tags', { name })
       .pipe(
         tap((tag) => {
-          this._tagData!.data.push(tag);
+          this._tagData!.data.push(tag.data);
           this._tagData!.active++;
         }),
         catchError((error) => throwError(error.error.message))
