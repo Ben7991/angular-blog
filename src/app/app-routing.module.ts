@@ -23,6 +23,7 @@ import { LoginComponent } from './pages/auth/login/login.component';
 import { RegisterComponent } from './pages/auth/register/register.component';
 import { adminAuthGuardGuard } from './shared/guard/admin-auth-guard.guard';
 import { categoryResolver } from './shared/resolver/category.resolver';
+import { tagResolver } from './shared/resolver/tag.resolver';
 
 const appRoute: Routes = [
   { path: 'login', component: LoginComponent },
@@ -44,9 +45,17 @@ const appRoute: Routes = [
         component: EditCategoryComponent,
         resolve: { categories: categoryResolver },
       },
-      { path: 'tags', component: TagsComponent },
+      {
+        path: 'tags',
+        component: TagsComponent,
+        resolve: { tags: tagResolver },
+      },
       { path: 'tags/create', component: CreateTagComponent },
-      { path: 'tags/:id', component: EditTagComponent },
+      {
+        path: 'tags/:id',
+        component: EditTagComponent,
+        resolve: { tags: tagResolver },
+      },
       { path: 'posts', component: PostsComponent },
       { path: 'posts/create', component: CreatePostComponent },
       { path: 'posts/:id', component: EditPostComponent },
