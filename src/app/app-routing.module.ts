@@ -57,8 +57,16 @@ const appRoute: Routes = [
         resolve: { tags: tagResolver },
       },
       { path: 'posts', component: PostsComponent },
-      { path: 'posts/create', component: CreatePostComponent },
-      { path: 'posts/:id', component: EditPostComponent },
+      {
+        path: 'posts/create',
+        component: CreatePostComponent,
+        resolve: { categories: categoryResolver },
+      },
+      {
+        path: 'posts/:id',
+        component: EditPostComponent,
+        resolve: { categories: categoryResolver },
+      },
       { path: 'comments', component: CommentsComponent },
       { path: 'comments/:id', component: EditCommentComponent },
       {
