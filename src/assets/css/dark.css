@@ -81,3 +81,25 @@
 .mode-dark th {
   color: var(--bs-gray-300) !important;
 }
+
+.mode-dark .ql-toolbar,
+.mode-dark .ql-container {
+  border-color: var(--bs-dark);
+  background-color: var(--dark-light);
+}
+
+.mode-dark .ql-editor.ql-blank::before {
+  color: var(--bs-gray-600);
+}
+
+.mode-dark .ql-snow .ql-stroke {
+  stroke: var(--bs-gray-500);
+}
+
+.mode-dark .ql-snow .ql-fill {
+  fill: var(--bs-gray-500);
+}
+
+.mode-dark .ql-snow .ql-picker-label::before {
+  color: var(--bs-gray-500);
+}
