@@ -47,13 +47,37 @@ h6 {
   padding: 5px;
 }
 
+.img-loader-container {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.img-loader {
+  width: 30px;
+  height: 30px;
+}
+
+input.ng-invalid.ng-touched,
+input.ng-invalid.ng-dirty {
+  border-color: var(--bs-danger) !important;
+}
+
 @media (min-width: 768px) {
   .w-md-25 {
     flex-basis: 25%;
   }
 }
 
-input.ng-invalid.ng-touched,
-input.ng-invalid.ng-dirty {
-  border-color: var(--bs-danger) !important;
+@media (min-width: 1200px) {
+  .img-loader-container {
+    height: 250px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .img-loader-container {
+    height: 300px;
+  }
 }
