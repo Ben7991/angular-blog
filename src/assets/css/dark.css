@@ -103,3 +103,7 @@
 .mode-dark .ql-snow .ql-picker-label::before {
   color: var(--bs-gray-500);
 }
+
+.mode-dark .mode-img-loader {
+  border: 1px dashed var(--bs-gray-600);
+}
